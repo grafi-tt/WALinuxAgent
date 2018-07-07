@@ -114,6 +114,14 @@ def get_data_files(name, version, fullname):
                        src=["config/clearlinux/waagent.conf"])
         set_systemd_files(data_files, dest='/usr/lib/systemd/system',
                           src=["init/clearlinux/waagent.service"])
+    elif name == 'gentoo':
+        set_bin_files(data_files)
+        set_conf_files(data_files)
+        set_logrotate_files(data_files)
+        set_udev_files(data_files)
+        set_sysv_files(data_files, dest='/etc/init.d',
+                       src=["init/gentoo/waagent"])
+        set_systemd_files(data_files, dest="/usr/lib/systemd/system")
     elif name == 'ubuntu':
         set_bin_files(data_files)
         set_conf_files(data_files, src=["config/ubuntu/waagent.conf"])
