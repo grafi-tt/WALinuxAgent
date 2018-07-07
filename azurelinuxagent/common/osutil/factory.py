@@ -24,6 +24,7 @@ from .clearlinux import ClearLinuxUtil
 from .coreos import CoreOSUtil
 from .debian import DebianOSUtil
 from .freebsd import FreeBSDOSUtil
+from .gentoo import GentooUtil
 from .openbsd import OpenBSDOSUtil
 from .redhat import RedhatOSUtil, Redhat6xOSUtil
 from .suse import SUSEOSUtil, SUSE11OSUtil
@@ -40,7 +41,6 @@ def get_osutil(distro_name=DISTRO_NAME,
                distro_code_name=DISTRO_CODE_NAME,
                distro_version=DISTRO_VERSION,
                distro_full_name=DISTRO_FULL_NAME):
-
     if distro_name == "arch":
         return ArchUtil()
 
@@ -70,6 +70,9 @@ def get_osutil(distro_name=DISTRO_NAME,
 
     if distro_name == "coreos" or distro_code_name == "coreos":
         return CoreOSUtil()
+
+    if distro_name == "gentoo":
+        return GentooUtil()
 
     if distro_name in ("suse", "sles", "opensuse"):
         if distro_full_name == 'SUSE Linux Enterprise Server' \
